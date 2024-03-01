@@ -25,8 +25,9 @@ public class AlumnoJPADAO implements DAOAlumnosInterface<Alumno> {
 
     @Override
     public boolean modificarTabla(long id,Alumno alumno) {
-        abrirEntityManager();
+
         Optional<Alumno> alumno1 = obtenerTodosAlumnos().stream().filter(a -> a.getId() == alumno.getId()).findAny();
+        abrirEntityManager();
         if (alumno1.isPresent() && alumno.getId() != 0) {
             try {
                 entityManager.getTransaction().begin();
@@ -81,9 +82,9 @@ public class AlumnoJPADAO implements DAOAlumnosInterface<Alumno> {
 
     @Override
     public boolean insertarenTabla(Alumno alumno) {
-        abrirEntityManager();
         Optional<Alumno> alumno1 = obtenerTodosAlumnos().stream().filter(a -> a.getId() == alumno.getId()).findAny();
-        if (!alumno1.isPresent() && alumno.getId() != 0) {
+        if (!alumno1.isPresent()) {
+            abrirEntityManager();
             try {
                 entityManager.getTransaction().begin();
                 entityManager.persist(alumno);
@@ -104,9 +105,10 @@ public class AlumnoJPADAO implements DAOAlumnosInterface<Alumno> {
 
     @Override
     public boolean eliminardeTabla(long id) {
-        abrirEntityManager();
+
         Optional<Alumno> alumno1 = obtenerTodosAlumnos().stream().filter(a -> a.getId() == id).findAny();
-        if (!alumno1.isPresent() && id != 0) {
+        if (alumno1.isPresent() && id != 0) {
+            abrirEntityManager();
             try {
                 Alumno persona = entityManager.find(Alumno.class, id);
                 if (persona != null) {

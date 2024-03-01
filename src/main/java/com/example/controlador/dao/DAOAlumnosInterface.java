@@ -20,7 +20,4 @@ public interface DAOAlumnosInterface<T> {
     List<T> contienePalabraClaveDni(String dniRecibido);
     List<T> empiezaPorDni(String dniRecibido);
     List<T> terminaEnDni(String dniRecibido);
-//    List<T> notaMediaAlum(double mediaRecibida);
-//    List<T> profesorTutorAlum(String nombreTutor);
-
 }

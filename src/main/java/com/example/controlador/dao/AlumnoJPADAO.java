@@ -151,7 +151,6 @@ public class AlumnoJPADAO implements DAOAlumnosInterface<Alumno> {
         abrirEntityManager();
         TypedQuery<Alumno> query = entityManager.createQuery(
                 "SELECT a FROM Alumno a " +
-                        "LEFT JOIN FETCH a.curso c " +
                         "WHERE a.id = :id", Alumno.class
         );
         query.setParameter("id", id);

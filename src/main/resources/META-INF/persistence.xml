@@ -12,7 +12,7 @@
             <property name="jakarta.persistence.jdbc.user" value="sql11687886"/>
             <property name="jakarta.persistence.jdbc.password" value="iIVdMW9GY4"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>
